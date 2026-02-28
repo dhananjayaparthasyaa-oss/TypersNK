@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Test</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,500;16..144,700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Shared colors */
+  --accent-green: #22c55e;
+  --accent-orange: #f97316;
+  --accent-red: #ef4444;
+  --error-red: #f75757;
+  --button-restart: #4b8ad9;
+  --button-restart-hover: #3b7ac9;
+  --button-secondary: #394354;
+  --button-secondary-hover: #6b7280;
+  /* Dark theme */
+  --bg-gradient-start: #2c5364;
+  --bg-gradient-middle: #203a43;
+  --bg-gradient-end: #0f2027;
+  --primary-bg: #1f2938;
+  --secondary-bg: #253544;
+  --secondary-bg-rgb: 37, 53, 68;
+  --border: #374151;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-error: #f87171;
+  --text-accent: #60a5fa;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --focus-border: #dcffe9;
+}
+
+:root[data-theme="light"] {
+  --bg-gradient-start: #f7fafc;
+  --bg-gradient-middle: #f3f4f6;
+  --bg-gradient-end: #e5e7eb;
+  --primary-bg: #ffffff;
+  --secondary-bg: #f7fafc;
+  --secondary-bg-rgb: 247, 250, 252;
+  --border: #e5e7eb;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-error: #b91c1c;
+  --text-accent: #1e40af;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --focus-border: #93c5fd;
+  --button-restart: #4b83eb;
+  --button-restart-hover: #3b73db;
+  --button-secondary: #d1d5db;
+  --button-secondary-hover: #9ca3af;
+}
+
+:root[data-theme="white-blue"] {
+  --bg-gradient-start: #e0f7ff;
+  --bg-gradient-middle: #cceffd;
+  --bg-gradient-end: #b3e5fc;
+  --primary-bg: #ffffff;
+  --secondary-bg: #f1faff;
+  --secondary-bg-rgb: 241, 250, 255;
+  --border: #90cdf4;
+  --text-primary: #1e3a8a;
+  --text-secondary: #3b82f6;
+  --text-error: #b91c1c;
+  --text-accent: #2563eb;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --focus-border: #60a5fa;
+  --button-restart: #60a5fa;
+  --button-restart-hover: #4b95ea;
+  --button-secondary: #bfdbfe;
+  --button-secondary-hover: #93c5fd;
+}
+
+:root[data-theme="solarized"] {
+  --bg-gradient-start: #f6e8c3;
+  --bg-gradient-middle: #ede0b3;
+  --bg-gradient-end: #d8c7a3;
+  --primary-bg: #fdf6e3;
+  --secondary-bg: #eee8d5;
+  --secondary-bg-rgb: 238, 232, 213;
+  --border: #93a1a1;
+  --text-primary: #073642;
+  --text-secondary: #2aa198;
+  --text-error: #b91c1c;
+  --text-accent: #268bd2;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --focus-border: #2aa198;
+  --button-restart: #4ab1a8;
+  --button-restart-hover: #3aa198;
+  --button-secondary: #93a1a1;
+  --button-secondary-hover: #6c7a89;
+}
+
+:root[data-theme="midnight"] {
+  --bg-gradient-start: #2a2a4e;
+  --bg-gradient-middle: #32325e;
+  --bg-gradient-end: #3a3a6e;
+  --primary-bg: #1a1a2e;
+  --secondary-bg: #25253f;
+  --secondary-bg-rgb: 37, 37, 63;
+  --border: #4b3f99;
+  --text-primary: #e0d7ff;
+  --text-secondary: #7b61ff;
+  --text-error: #b91c1c;
+  --text-accent: #6b7280;
+  --shadow: rgba(0, 0, 0, 0.2);
+  --focus-border: #7b61ff;
+  --button-restart: #8b71ff;
+  --button-restart-hover: #7b61ff;
+  --button-secondary: #4b3f99;
+  --button-secondary-hover: #3730a3;
+}
+
+:root[data-theme="forest"] {
+  --bg-gradient-start: #2f4f4f;
+  --bg-gradient-middle: #3b6b5b;
+  --bg-gradient-end: #486b5b;
+  --primary-bg: #3c584f;
+  --secondary-bg: #4a7066;
+  --secondary-bg-rgb: 74, 112, 102;
+  --border: #6b9080;
+  --text-primary: #f0f7ee;
+  --text-secondary: #a8d5ba;
+  --text-error: #e57373;
+  --text-accent: #66bb6a;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --focus-border: #81c784;
+  --button-restart: #7bcb7e;
+  --button-restart-hover: #6bbb6e;
+  --button-secondary: #6b9080;
+  --button-secondary-hover: #5a7a6a;
+}
+
+:root[data-theme="sunset"] {
+  --bg-gradient-start: #ff6f61;
+  --bg-gradient-middle: #ff8a65;
+  --bg-gradient-end: #ffab91;
+  --primary-bg: #ffebee;
+  --secondary-bg: #ffccbc;
+  --secondary-bg-rgb: 255, 204, 188;
+  --border: #ef9a9a;
+  --text-primary: #3e2723;
+  --text-secondary: #d81b60;
+  --text-error: #b71c1c;
+  --text-accent: #f06292;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --focus-border: #ec407a;
+  --button-restart: #ff7aa2;
+  --button-restart-hover: #f06292;
+  --button-secondary: #ef9a9a;
+  --button-secondary-hover: #e57373;
+}
+
+:root[data-theme="ocean"] {
+  --bg-gradient-start: #0288d1;
+  --bg-gradient-middle: #4fc3f7;
+  --bg-gradient-end: #81d4fa;
+  --primary-bg: #e1f5fe;
+  --secondary-bg: #b3e5fc;
+  --secondary-bg-rgb: 179, 229, 252;
+  --border: #4fc3f7;
+  --text-primary: #01579b;
+  --text-secondary: #4fc3f7;
+  --text-error: #b91c1c;
+  --text-accent: #0288d1;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --focus-border: #4fc3f7;
+  --button-restart: #4ba8e1;
+  --button-restart-hover: #2b98d1;
+  --button-secondary: #4fc3f7;
+  --button-secondary-hover: #29b6f6;
+}
+
+:root[data-theme="retro"] {
+  --bg-gradient-start: #ff00ff;
+  --bg-gradient-middle: #ff69b4;
+  --bg-gradient-end: #ff8c00;
+  --primary-bg: #2c2c2c;
+  --secondary-bg: #3f3f3f;
+  --secondary-bg-rgb: 63, 63, 63;
+  --border: #ff69b4;
+  --text-primary: #f5f5f5;
+  --text-secondary: #ffd700;
+  --text-error: #ff4500;
+  --text-accent: #00ff00;
+  --shadow: rgba(0, 0, 0, 0.2);
+  --focus-border: #00ff00;
+  --button-restart: #33ff33;
+  --button-restart-hover: #00ff00;
+  --button-secondary: #ff69b4;
+  --button-secondary-hover: #ff1493;
+}
+
+:root[data-theme="desert"] {
+  --bg-gradient-start: #d2b48c;
+  --bg-gradient-middle: #e4c59e;
+  --bg-gradient-end: #f5deb3;
+  --primary-bg: #fff8e7;
+  --secondary-bg: #f4e4bc;
+  --secondary-bg-rgb: 244, 228, 188;
+  --border: #d2b48c;
+  --text-primary: #4b2e1a;
+  --text-secondary: #8b5a2b;
+  --text-error: #d32f2f;
+  --text-accent: #bf360c;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --focus-border: #e64a19;
+  --button-restart: #d2562c;
+  --button-restart-hover: #c2461c;
+  --button-secondary: #d2b48c;
+  --button-secondary-hover: #c19a6b;
+}
+
+:root[data-theme="galaxy"] {
+  --bg-gradient-start: #1a237e;
+  --bg-gradient-middle: #3949ab;
+  --bg-gradient-end: #5c6bc0;
+  --primary-bg: #0d1b2a;
+  --secondary-bg: #1b263b;
+  --secondary-bg-rgb: 27, 38, 59;
+  --border: #3f51b5;
+  --text-primary: #e8eaf6;
+  --text-secondary: #90caf9;
+  --text-error: #ef5350;
+  --text-accent: #42a5f5;
+  --shadow: rgba(0, 0, 0, 0.2);
+  --focus-border: #64b5f6;
+  --button-restart: #62b5f5;
+  --button-restart-hover: #52a5e5;
+  --button-secondary: #3f51b5;
+  --button-secondary-hover: #303f9f;
+}
+
+:root[data-theme="autumn"] {
+  --bg-gradient-start: #d84315;
+  --bg-gradient-middle: #e57373;
+  --bg-gradient-end: #ef9a9a;
+  --primary-bg: #fff3e0;
+  --secondary-bg: #ffccbc;
+  --secondary-bg-rgb: 255, 204, 188;
+  --border: #ff8a65;
+  --text-primary: #3e2723;
+  --text-secondary: #f4511e;
+  --text-error: #d32f2f;
+  --text-accent: #e64a19;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --focus-border: #ff7043;
+  --button-restart: #f46a39;
+  --button-restart-hover: #e45a29;
+  --button-secondary: #ff8a65;
+  --button-secondary-hover: #ff7043;
+}
+
+:root[data-theme="cyberpunk"] {
+  --bg-gradient-start: #ff00cc;
+  --bg-gradient-middle: #00ffcc;
+  --bg-gradient-end: #33ccff;
+  --primary-bg: #1c2526;
+  --secondary-bg: #2e3b3e;
+  --secondary-bg-rgb: 46, 59, 62;
+  --border: #ff4081;
+  --text-primary: #f5f5f5;
+  --text-error: #ff1744;
+  --text-accent: #ff4081;
+  --shadow: rgba(0, 0, 0, 0.2);
+  --focus-border: #00e5ff;
+  --button-restart: #ff6091;
+  --button-restart-hover: #ff5081;
+  --button-secondary: #00e5ff;
+  --button-secondary-hover: #00b7eb;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+  outline: none;
+  font-weight: 400;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, var(--bg-gradient-start), var(--bg-gradient-middle), var(--bg-gradient-end));
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.container {
+  background: rgba(var(--secondary-bg-rgb), 0.9);
+  border: 1px solid var(--border);
+  box-shadow: 17px 1px 20px var(--shadow);
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+}
+
+.header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.header h1 {
+  font-family: 'Montagu Slab', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.header p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 20px;
+}
+
+.settings-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.settings-container select {
+  background: var(--secondary-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.settings-container select:focus {
+  box-shadow: 0 0 0 2px var(--text-primary);
+  border-color: var(--focus-border);
+}
+
+.settings-container .button {
+  background-color: var(--button-secondary);
+  box-shadow: 2px 1px 20px 4px var(--shadow);
+}
+
+.settings-container .button:hover {
+  background-color: var(--button-secondary-hover);
+}
+
+.time-container {
+  display: flex;
+  padding: 0 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-bar-container {
+  height: 8px;
+  width: 60%;
+  background-color: var(--secondary-bg);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--accent-green);
+  width: 100%;
+  animation: none;
+}
+
+.progress-bar.running {
+  animation: progress var(--duration) linear forwards;
+}
+
+@keyframes progress {
+  0% { width: 100%; background-color: var(--accent-green); }
+  60% { width: 40%; background-color: var(--accent-green); }
+  60.01% { background-color: var(--accent-orange); }
+  80% { width: 20%; background-color: var(--accent-orange); }
+  80.01% { background-color: var(--accent-red); }
+  100% { width: 0%; background-color: var(--accent-red); }
+}
+
+.word-main {
+  padding: 10px;
+  background-color: var(--secondary-bg);
+  border-radius: 12px;
+  box-shadow: 2px 1px 20px 4px var(--shadow);
+  margin: 20px 0;
+  border: 1px solid var(--border);
+}
+
+.word-container {
+  position: relative;
+  height: 245px;
+  overflow: hidden;
+}
+
+#word-list {
+  position: absolute;
+  transition: transform 200ms ease-in-out;
+  padding: 15px;
+}
+
+#word-list span {
+  line-height: 37px;
+  margin-bottom: 8px;
+  display: inline-block;
+  margin-left: 4px;
+  margin-right: 4px;
+  font-size: 18px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 4px;
+}
+
+.text-gray { color: var(--text-secondary); }
+.text-white { color: var(--text-primary); background: rgba(var(--text-primary-rgb, 255, 255, 255), 0.1); }
+.text-green { color: var(--accent-green); }
+.text-red { color: var(--text-error); }
+.bg-red { background-color: var(--error-red); }
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  padding: 8px 20px;
+  border-radius: 12px;
+  background-color: var(--secondary-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  margin-right: 12px;
+  box-shadow: 2px 1px 20px 4px var(--shadow);
+}
+
+.input:focus {
+  box-shadow: 0 0 0 2px var(--text-primary);
+  border-color: var(--focus-border);
+}
+
+.button {
+  min-height: 50px;
+  min-width: 50px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-primary);
+  border: none;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.button.restart {
+  background-color: var(--button-restart);
+  box-shadow: 2px 1px 20px 4px var(--shadow);
+}
+
+.button.restart:hover {
+  background-color: var(--button-restart-hover);
+}
+
+.button.history,
+.button.profile,
+.button.achievements,
+.button.export,
+.button.custom-words {
+  background-color: var(--button-secondary);
+  box-shadow: 2px 1px 20px 4px var(--shadow);
+}
+
+.button.history:hover,
+.button.profile:hover,
+.button.achievements:hover,
+.button.export:hover,
+.button.custom-words:hover {
+  background-color: var(--button-secondary-hover);
+}
+
+.button.theme-toggle {
+  background-color: var(--button-secondary);
+  box-shadow: 2px 1px 20px 4px var(--shadow);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.button.theme-toggle:hover {
+  background-color: var(--button-secondary-hover);
+}
+
+.tooltip {
+  visibility: hidden;
+  background-color: var(--secondary-bg);
+  color: var(--text-primary);
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 12px;
+  position: absolute;
+  z-index: 10;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  box-shadow: 2px 1px 20px 4px var(--shadow);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.button:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.result-container.hidden {
+  display: none;
+}
+
+.result-container {
+  background: var(--primary-bg);
+  box-shadow: 1px 1px 20px 13px var(--shadow);
+  max-width: 800px;
+  padding: 2rem 3rem;
+  border-radius: 20px;
+}
+
+.result-heading {
+  font-family: 'Montagu Slab', serif;
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.congrats-message {
+  text-align: center;
+  font-size: 14px;
+  color: var(--accent-green);
+  margin-bottom: 20px;
+  display: none;
+}
+
+.result-cards {
+  display: grid;
+  grid-template-columns: minmax(230px, max-content) repeat(auto-fill, 230px);
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.card {
+  background: var(--secondary-bg);
+  padding: 20px 25px;
+  margin: 10px;
+  border-radius: 15px;
+  border: 2px solid var(--border);
+  box-shadow: 2px 1px 20px 4px var(--shadow);
+  transition: all ease 0.2s;
+}
+.card:hover{
+  transform: translateY(-5px);
+}
+.card .card-description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.score {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.incorrect-words-heading {
+  font-family: 'Montagu Slab', serif;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.incorrect-word-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 130px;
+  overflow: auto;
+}
+
+.incorrect-word-list::-webkit-scrollbar {
+  width: 0;
+}
+
+.incorrect-word-list li {
+  background: var(--error-red);
+  color: var(--text-primary);
+  padding: 5px 10px;
+  margin: 0 8px 10px 5px;
+  border-radius: 8px;
+  word-break: keep-all;
+}
+
+.incorrect-words.hidden {
+  display: none;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: rgba(var(--secondary-bg-rgb), 0.9);
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 90%;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 2px 1px 20px 4px var(--shadow);
+  border: 1px solid var(--border);
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.modal-content h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  text-align: center;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-primary);
+  background: var(--button-secondary);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.close-button:hover {
+  background: var(--button-secondary-hover);
+  color: var(--text-primary);
+}
+
+.history-table,
+.achievements-grid,
+.profile-stats {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-table th,
+.history-table td,
+.profile-stats th,
+.profile-stats td {
+  padding: 8px;
+  border: 1px solid var(--border);
+  text-align: left;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.history-table th,
+.profile-stats th {
+  background: var(--secondary-bg);
+  font-weight: 600;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.achievement {
+  background: var(--secondary-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.achievement.unlocked {
+  color: var(--text-primary);
+  border-color: var(--accent-green);
+}
+
+.achievement:hover {
+  transform: scale(1.05);
+}
+
+.achievement i {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.achievement-count {
+  font-size: 12px;
+  margin-top: 5px;
+  color: var(--accent-green);
+}
+
+.profile-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  background: var(--secondary-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+#achievement-detail-modal .modal-content {
+  width: 400px;
+}
+
+#achievement-detail-modal p {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin: 10px 0;
+  text-align: center;
+}
+
+.graph-container {
+  margin-top: 20px;
+  padding: 10px;
+  background: var(--secondary-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 2px 1px 20px 4px var(--shadow);
+}
+
+#progress-graph {
+  max-height: 200px;
+}
+
+#export-canvas {
+  display: none;
+}
+
+.custom-words-textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  background: var(--secondary-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.custom-words-textarea:focus {
+  box-shadow: 0 0 0 2px var(--text-primary);
+  border-color: var(--focus-border);
+}
+
+.custom-words-save {
+  background-color: var(--button-restart);
+  color: var(--text-primary);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+  display: block;
+  margin: 15px auto 0;
+  text-align: center;
+}
+
+.custom-words-save:hover {
+  background-color: var(--button-restart-hover);
+}
+
+.button.restart {
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1.5rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+  }
+  .button.theme-toggle {
+    top: 10px;
+    right: 10px;
+    min-height: 40px;
+    min-width: 40px;
+    font-size: 16px;
+  }
+}</style>
+</head>
+<body>
+  <div class="container">
+    <button id="theme-toggle" class="button theme-toggle" aria-label="Toggle theme">
+      <i class="ri-sun-line"></i>
+      <span class="tooltip">Switch to light theme</span>
+    </button>
+    <div class="header">
+      <h1>Typing Test</h1>
+      <p>Boost your speed. Break your limits. Get faster with every keypress.</p>
+    </div>
+
+    <div class="settings-container">
+      <select id="time-select" aria-label="Select test duration">
+        <option value="15">15s</option>
+        <option value="30">30s</option>
+        <option value="60" selected>60s</option>
+        <option value="120">120s</option>
+      </select>
+      <select id="difficulty-select" aria-label="Select difficulty level">
+        <option value="easy">Easy</option>
+        <option value="medium" selected>Medium</option>
+        <option value="hard">Hard</option>
+        <option value="punctuation">Punctuation</option>
+        <option value="custom">Custom</option>
+      </select>
+      <button id="custom-words-button" class="button custom-words">
+        <i class="ri-edit-line"></i>
+        <span class="tooltip">Set custom words</span>
+      </button>
+    </div>
+
+    <div class="time-container">
+      <p>WPM: <span id="wpm">0</span></p>
+      <div class="progress-bar-container">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+      <div class="time">
+        Time: <span id="time-left" class="font-bold">60s</span>
+      </div>
+    </div>
+
+    <div class="word-main">
+      <div class="word-container">
+        <div id="word-list"></div>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <input id="typing-input" type="text" class="input" autocomplete="off" placeholder="Type here..." />
+      <button id="restart-button" class="button restart">
+        <i class="ri-loop-left-line"></i>
+        <span class="tooltip">Restart the test</span>
+      </button>
+      <button id="history-button" class="button history">
+        <i class="ri-history-line"></i>
+        <span class="tooltip">View past test results</span>
+      </button>
+      <button id="profile-button" class="button profile">
+        <i class="ri-user-line"></i>
+        <span class="tooltip">Manage your profile and stats</span>
+      </button>
+      <button id="achievements-button" class="button achievements">
+        <i class="ri-medal-line"></i>
+        <span class="tooltip">Check your earned achievements</span>
+      </button>
+      <button id="export-results" class="button export">
+        <i class="ri-download-line"></i>
+        <span class="tooltip">Export results as PNG</span>
+      </button>
+    </div>
+
+    <div id="result-container" class="result-container hidden">
+      <h2 class="result-heading">Test Complete!</h2>
+      <p id="congrats-message" class="congrats-message"></p>
+      <div class="result-cards">
+        <div class="card">
+          <p class="card-description">
+            <span class="card-heading">WPM:</span> <i class="ri-speed-up-line card-icon"></i>
+          </p>
+          <span id="result-wpm" class="score text-green">0</span>
+        </div>
+        <div class="card">
+          <p class="card-description">
+            <span class="card-heading">Accuracy:</span> <i class="ri-focus-3-line card-icon"></i>
+          </p>
+          <span id="result-accuracy" class="score text-blue">0%</span>
+        </div>
+        <div class="card">
+          <p class="card-description">
+            <span class="card-heading">Correct Words:</span> <i class="ri-keyboard-box-line card-icon"></i>
+          </p>
+          <span id="correct-words" class="score text-green">0</span>
+        </div>
+        <div class="card">
+          <p class="card-description">
+            <span class="card-heading">Incorrect Words:</span> <i class="ri-keyboard-box-line card-icon"></i>
+          </p>
+          <span id="incorrect-words-count" class="score text-red">0</span>
+        </div>
+        <div class="card">
+          <p class="card-description">
+            <span class="card-heading">Total Keystrokes:</span> <i class="ri-keyboard-box-line card-icon"></i>
+          </p>
+          <span id="total-keystrokes" class="score">0</span>
+        </div>
+        <div class="card">
+          <p class="card-description">
+            <span class="card-heading">Correct Keystrokes:</span> <i class="ri-keyboard-box-line card-icon"></i>
+          </p>
+          <span id="correct-keystrokes" class="score text-green">0</span>
+        </div>
+        <div class="card">
+          <p class="card-description">
+            <span class="card-heading">Incorrect Keystrokes:</span> <i class="ri-keyboard-box-line card-icon"></i>
+          </p>
+          <span id="incorrect-keystrokes" class="score text-red">0</span>
+        </div>
+      </div>
+      <div id="incorrect-words" class="incorrect-words hidden">
+        <h3 class="incorrect-words-heading">Incorrect Words:</h3>
+        <ul id="incorrect-word-list" class="incorrect-word-list"></ul>
+      </div>
+    </div>
+
+    <div id="history-modal" class="modal">
+      <div class="modal-content">
+        <h2>Test History</h2>
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>WPM</th>
+              <th>Accuracy</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody id="history-table-body"></tbody>
+        </table>
+        <div class="graph-container">
+          <canvas id="progress-graph"></canvas>
+        </div>
+        <span class="close-button">×</span>
+      </div>
+    </div>
+
+    <div id="profile-modal" class="modal">
+      <div class="modal-content">
+        <h2>Profile</h2>
+        <input id="username-input" class="profile-input" placeholder="Enter username" />
+        <table class="profile-stats">
+          <thead>
+            <tr>
+              <th>Stat</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody id="profile-stats-body"></tbody>
+        </table>
+        <span class="close-button">×</span>
+      </div>
+    </div>
+
+    <div id="achievements-modal" class="modal">
+      <div class="modal-content">
+        <h2>Achievements</h2>
+        <div id="achievements-grid" class="achievements-grid"></div>
+        <span class="close-button">×</span>
+      </div>
+    </div>
+
+    <div id="achievement-detail-modal" class="modal">
+      <div class="modal-content">
+        <h2 id="achievement-detail-title"></h2>
+        <p id="achievement-detail-desc"></p>
+        <p id="achievement-detail-count"></p>
+        <span class="close-button">×</span>
+      </div>
+    </div>
+
+    <div id="custom-words-modal" class="modal">
+      <div class="modal-content">
+        <h2>Custom Words</h2>
+        <textarea id="custom-words-input" class="custom-words-textarea" placeholder="Enter words separated by space or new lines"></textarea>
+        <button id="custom-words-save" class="custom-words-save">Save Custom Words</button>
+        <span class="close-button">×</span>
+      </div>
+    </div>
+
+    <canvas id="export-canvas"></canvas>
+  </div>
+  <script>
+    const easyWords = [
+      "the", "be", "to", "of", "and", "in", "that", "have", "it", "for",
+      "not", "on", "with", "he", "as", "you", "do", "at", "this", "but"
+    ];
+    const mediumWords = [
+      "because", "through", "important", "information", "development",
+      "service", "public", "system", "community", "management"
+    ];
+    const hardWords = [
+      "conscientious", "idiosyncratic", "paradoxically", "unprecedented",
+      "serendipity", "perspicuous", "effervescent", "defenestration",
+      "peregrination", "susurrus"
+    ];
+    const punctuationWords = easyWords.map(word => Math.random() > 0.5 ? word + [".", ",", "!", "?"][Math.floor(Math.random() * 4)] : word);
+
+    const achievements = [
+      { id: "speedy_50", name: "Speedy 50", description: "Achieve 50+ WPM", icon: "speed-up-line", condition: (stats) => stats.wpm >= 50 },
+      { id: "blazing_80", name: "Blazing 80", description: "Achieve 80+ WPM", icon: "fire-line", condition: (stats) => stats.wpm >= 80 },
+      { id: "accuracy_ace", name: "Accuracy Ace", description: "Achieve 95%+ accuracy", icon: "focus-3-line", condition: (stats) => stats.accuracy >= 95 },
+      { id: "marathon_typist", name: "Marathon Typist", description: "Complete a 120-second test", icon: "timer-line", condition: (stats) => stats.duration === 120 }
+    ];
+
+    let state = {
+      wordList: [],
+      currentIndex: 0,
+      typed: "",
+      correctWords: 0,
+      incorrectWords: 0,
+      correctChars: 0,
+      wrongChars: 0,
+      startTime: null,
+      timeLeft: 60,
+      duration: 60,
+      isRunning: false,
+      lineOffset: 0,
+      typedHistory: [],
+      incorrectWordsMap: {}
+    };
+
+    let timerInterval = null;
+    let testHistory = [];
+    let achievementCounts = {};
+    let progressChart = null;
+    let customWords = [];
+
+    const elements = {
+      wordList: document.getElementById("word-list"),
+      typingInput: document.getElementById("typing-input"),
+      timeLeftSpan: document.getElementById("time-left"),
+      wpmSpan: document.getElementById("wpm"),
+      progressBar: document.getElementById("progress-bar"),
+      resultContainer: document.getElementById("result-container"),
+      resultWpm: document.getElementById("result-wpm"),
+      resultAccuracy: document.getElementById("result-accuracy"),
+      correctWords: document.getElementById("correct-words"),
+      incorrectWordsCount: document.getElementById("incorrect-words-count"),
+      totalKeystrokes: document.getElementById("total-keystrokes"),
+      correctKeystrokes: document.getElementById("correct-keystrokes"),
+      incorrectKeystrokes: document.getElementById("incorrect-keystrokes"),
+      incorrectWordsDiv: document.getElementById("incorrect-words"),
+      incorrectWordsList: document.getElementById("incorrect-word-list"),
+      timeSelect: document.getElementById("time-select"),
+      difficultySelect: document.getElementById("difficulty-select"),
+      restartButton: document.getElementById("restart-button"),
+      historyButton: document.getElementById("history-button"),
+      profileButton: document.getElementById("profile-button"),
+      achievementsButton: document.getElementById("achievements-button"),
+      exportResults: document.getElementById("export-results"),
+      themeToggle: document.getElementById("theme-toggle"),
+      historyModal: document.getElementById("history-modal"),
+      profileModal: document.getElementById("profile-modal"),
+      achievementsModal: document.getElementById("achievements-modal"),
+      achievementDetailModal: document.getElementById("achievement-detail-modal"),
+      historyTableBody: document.getElementById("history-table-body"),
+      usernameInput: document.getElementById("username-input"),
+      profileStatsBody: document.getElementById("profile-stats-body"),
+      achievementsGrid: document.getElementById("achievements-grid"),
+      progressGraph: document.getElementById("progress-graph"),
+      congratsMessage: document.getElementById("congrats-message"),
+      exportCanvas: document.getElementById("export-canvas"),
+      customWordsButton: document.getElementById("custom-words-button"),
+      customWordsModal: document.getElementById("custom-words-modal"),
+      customWordsInput: document.getElementById("custom-words-input"),
+      customWordsSave: document.getElementById("custom-words-save")
+    };
+
+    function triggerConfetti() {
+      try {
+        const colors = [
+          getComputedStyle(document.documentElement).getPropertyValue('--accent-green').trim(),
+          getComputedStyle(document.documentElement).getPropertyValue('--accent-orange').trim(),
+          getComputedStyle(document.documentElement).getPropertyValue('--error-red').trim()
+        ];
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors
+        });
+      } catch (e) {
+        console.error("Error triggering confetti:", e);
+      }
+    }
+
+    function loadStorage() {
+      try {
+        testHistory = JSON.parse(localStorage.getItem("testHistory")) || [];
+        achievementCounts = JSON.parse(localStorage.getItem("achievementCounts")) || {};
+        customWords = JSON.parse(localStorage.getItem("customWords")) || [];
+        elements.usernameInput.value = localStorage.getItem("username") || "";
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        const validThemes = [
+          "dark", "light", "white-blue", "solarized", "midnight",
+          "forest", "sunset", "ocean", "retro", "desert", "galaxy",
+          "autumn", "cyberpunk"
+        ];
+        document.documentElement.setAttribute(
+          "data-theme",
+          validThemes.includes(savedTheme) ? savedTheme : "dark"
+        );
+        updateThemeIcon(document.documentElement.getAttribute("data-theme"));
+        const savedTime = localStorage.getItem("time-select");
+        const savedDifficulty = localStorage.getItem("difficulty-select");
+        const validTimes = ["15", "30", "60", "120"];
+        const validDifficulties = ["easy", "medium", "hard", "punctuation", "custom"];
+        if (savedTime && validTimes.includes(savedTime)) {
+          elements.timeSelect.value = savedTime;
+          state.timeLeft = parseInt(savedTime);
+          state.duration = parseInt(savedTime);
+        } else {
+          elements.timeSelect.value = "60";
+          state.timeLeft = 60;
+          state.duration = 60;
+        }
+        if (savedDifficulty && validDifficulties.includes(savedDifficulty)) {
+          elements.difficultySelect.value = savedDifficulty;
+        } else {
+          elements.difficultySelect.value = "medium";
+        }
+        elements.customWordsInput.value = customWords.join("\n");
+      } catch (e) {
+        console.error("Error loading storage:", e);
+        testHistory = [];
+        achievementCounts = {};
+        customWords = [];
+        elements.timeSelect.value = "60";
+        elements.difficultySelect.value = "medium";
+        state.timeLeft = 60;
+        state.duration = 60;
+      }
+    }
+
+    function updateThemeIcon(theme) {
+      try {
+        const icons = {
+          dark: "ri-sun-line",
+          light: "ri-moon-line",
+          "white-blue": "ri-contrast-line",
+          solarized: "ri-sun-cloudy-line",
+          midnight: "ri-star-line",
+          forest: "ri-tree-line",
+          sunset: "ri-sun-foggy-line",
+          ocean: "ri-drop-line",
+          retro: "ri-vidicon-line",
+          desert: "ri-sun-line",
+          galaxy: "ri-star-line",
+          autumn: "ri-leaf-line",
+          cyberpunk: "ri-computer-line"
+        };
+        const themes = [
+          "dark", "light", "white-blue", "solarized", "midnight",
+          "forest", "sunset", "ocean", "retro", "desert", "galaxy",
+          "autumn", "cyberpunk"
+        ];
+        const currentIndex = themes.indexOf(theme);
+        const nextTheme = themes[(currentIndex + 1) % themes.length];
+        elements.themeToggle.querySelector("i").className = icons[theme];
+        elements.themeToggle.querySelector(".tooltip").textContent = `Switch to ${nextTheme} theme`;
+      } catch (e) {
+        console.error("Error updating theme icon:", e);
+      }
+    }
+
+    function toggleTheme() {
+      try {
+        const themes = [
+          "dark", "light", "white-blue", "solarized", "midnight",
+          "forest", "sunset", "ocean", "retro", "desert", "galaxy",
+          "autumn", "cyberpunk"
+        ];
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        const currentIndex = themes.indexOf(currentTheme);
+        const newTheme = themes[(currentIndex + 1) % themes.length];
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateThemeIcon(newTheme);
+      } catch (e) {
+        console.error("Error toggling theme:", e);
+      }
+    }
+
+    function saveSettings() {
+      try {
+        localStorage.setItem("time-select", elements.timeSelect.value);
+        localStorage.setItem("difficulty-select", elements.difficultySelect.value);
+      } catch (e) {
+        console.error("Error saving settings:", e);
+      }
+    }
+
+    function saveCustomWords() {
+  try {
+    const input = elements.customWordsInput.value.trim();
+    customWords = input.split(/\s+/).map(word => word.trim()).filter(word => word.length > 0);
+    localStorage.setItem("customWords", JSON.stringify(customWords));
+    if (elements.difficultySelect.value === "custom" && !state.isRunning) {
+      resetTest();
+    }
+    elements.customWordsModal.style.display = "none";
+  } catch (e) {
+    console.error("Error saving custom words:", e);
+  }
+}
+
+    function generateWords() {
+      try {
+        const difficulty = elements.difficultySelect.value;
+        const wordPool = difficulty === "easy" ? easyWords :
+                         difficulty === "medium" ? mediumWords :
+                         difficulty === "hard" ? hardWords :
+                         difficulty === "punctuation" ? punctuationWords :
+                         customWords.length > 0 ? customWords : mediumWords;
+        state.wordList = Array.from({ length: 200 }, () => wordPool[Math.floor(Math.random() * wordPool.length)]);
+        renderWords();
+      } catch (e) {
+        console.error("Error generating words:", e);
+      }
+    }
+
+    function renderWords() {
+      try {
+        elements.wordList.innerHTML = "";
+        state.wordList.forEach((word, index) => {
+          let color = "text-gray";
+          let bgColor = "";
+          if (index === state.currentIndex) {
+            color = "text-white";
+            const trimmedInput = state.typed.trim();
+            if (trimmedInput && !word.startsWith(trimmedInput)) bgColor = "bg-red";
+          } else if (index < state.currentIndex) {
+            color = state.typedHistory[index] === word ? "text-green" : "text-red";
+          }
+          const span = document.createElement("span");
+          span.id = `word-${index}`;
+          span.className = `${color} ${bgColor}`;
+          span.textContent = word;
+          elements.wordList.appendChild(span);
+        });
+      } catch (e) {
+        console.error("Error rendering words:", e);
+      }
+    }
+
+    function getWPM() {
+      try {
+        if (!state.startTime) return 0;
+        const seconds = state.isRunning ? (Date.now() - state.startTime) / 1000 : state.duration;
+        if (seconds <= 0) return 0;
+        return Math.round(state.correctWords * 60 / seconds);
+      } catch (e) {
+        console.error("Error calculating WPM:", e);
+        return 0;
+      }
+    }
+
+    function getAccuracy() {
+      try {
+        const total = state.correctChars + state.wrongChars;
+        return total > 0 ? Math.round((state.correctChars / total) * 100) : 100;
+      } catch (e) {
+        console.error("Error calculating accuracy:", e);
+        return 100;
+      }
+    }
+
+    function updateUI() {
+      try {
+        elements.timeLeftSpan.textContent = `${state.timeLeft}s`;
+        elements.wpmSpan.textContent = getWPM();
+        elements.wordList.style.transform = `translateY(-${state.lineOffset * 45}px)`;
+        document.documentElement.style.setProperty('--duration', `${state.duration}s`);
+        renderWords();
+      } catch (e) {
+        console.error("Error updating UI:", e);
+      }
+    }
+
+    function updateProgress() {
+      try {
+        if (state.isRunning) {
+          elements.progressBar.classList.add("running");
+        } else {
+          elements.progressBar.classList.remove("running");
+          const newProgressBar = document.createElement("div");
+          newProgressBar.id = "progress-bar";
+          newProgressBar.className = "progress-bar";
+          elements.progressBar.parentNode.replaceChild(newProgressBar, elements.progressBar);
+          elements.progressBar = newProgressBar;
+        }
+      } catch (e) {
+        console.error("Error updating progress:", e);
+      }
+    }
+
+    function saveTestResult(wpm, accuracy) {
+      try {
+        const result = {
+          date: new Date().toLocaleString(),
+          wpm,
+          accuracy,
+          duration: state.duration,
+          correctWords: state.correctWords,
+          incorrectWords: state.incorrectWords,
+          totalKeystrokes: state.correctChars + state.wrongChars,
+          correctKeystrokes: state.correctChars,
+          incorrectKeystrokes: state.wrongChars
+        };
+        testHistory.push(result);
+        if (testHistory.length > 50) testHistory.shift();
+        localStorage.setItem("testHistory", JSON.stringify(testHistory));
+      } catch (e) {
+        console.error("Error saving test result:", e);
+      }
+    }
+
+    function showResults() {
+      try {
+        elements.resultContainer.classList.remove("hidden");
+        const wpm = getWPM();
+        const accuracy = getAccuracy();
+        elements.resultWpm.textContent = wpm;
+        elements.resultAccuracy.textContent = `${accuracy}%`;
+        elements.correctWords.textContent = state.correctWords;
+        elements.incorrectWordsCount.textContent = state.incorrectWords;
+        elements.totalKeystrokes.textContent = state.correctChars + state.wrongChars;
+        elements.correctKeystrokes.textContent = state.correctChars;
+        elements.incorrectKeystrokes.textContent = state.wrongChars;
+
+        if (wpm >= 100) {
+          elements.congratsMessage.textContent = "Congratulations! Only 1% of people can type as fast as you!";
+          elements.congratsMessage.style.display = "block";
+          triggerConfetti();
+        } else if (wpm >= 80) {
+          elements.congratsMessage.textContent = "Congratulations! Only 5% of people can type as fast as you!";
+          elements.congratsMessage.style.display = "block";
+          triggerConfetti();
+        } else if (wpm >= 60) {
+          elements.congratsMessage.textContent = "Congratulations! Only 15% of people can type as fast as you!";
+          elements.congratsMessage.style.display = "block";
+          triggerConfetti();
+        } else {
+          elements.congratsMessage.style.display = "none";
+        }
+
+        if (Object.keys(state.incorrectWordsMap).length > 0) {
+          elements.incorrectWordsDiv.classList.remove("hidden");
+          elements.incorrectWordsList.innerHTML = "";
+          Object.entries(state.incorrectWordsMap).forEach(([word, count]) => {
+            const li = document.createElement("li");
+            li.textContent = count > 1 ? `${word} x${count}` : word;
+            elements.incorrectWordsList.appendChild(li);
+          });
+        } else {
+          elements.incorrectWordsDiv.classList.add("hidden");
+        }
+
+        saveTestResult(wpm, accuracy);
+        checkAchievements({ wpm, accuracy, duration: state.duration });
+      } catch (e) {
+        console.error("Error showing results:", e);
+      }
+    }
+
+    function checkAchievements(stats) {
+      try {
+        achievements.forEach(achievement => {
+          if (achievement.condition(stats)) {
+            achievementCounts[achievement.id] = (achievementCounts[achievement.id] || 0) + 1;
+          }
+        });
+        localStorage.setItem("achievementCounts", JSON.stringify(achievementCounts));
+        updateAchievementsDisplay();
+      } catch (e) {
+        console.error("Error checking achievements:", e);
+      }
+    }
+
+    function updateAchievementsDisplay() {
+      try {
+        elements.achievementsGrid.innerHTML = "";
+        achievements.forEach(achievement => {
+          const div = document.createElement("div");
+          const count = achievementCounts[achievement.id] || 0;
+          div.className = `achievement ${count > 0 ? "unlocked" : ""}`;
+          div.innerHTML = `
+            <i class="ri-${achievement.icon}"></i>
+            <p>${achievement.name}</p>
+            ${count > 0 ? `<p class="achievement-count">Earned ${count} time${count > 1 ? "s" : ""}</p>` : ""}
+          `;
+          div.addEventListener("click", () => {
+            elements.achievementDetailModal.querySelector("#achievement-detail-title").textContent = achievement.name;
+            elements.achievementDetailModal.querySelector("#achievement-detail-desc").textContent = achievement.description;
+            elements.achievementDetailModal.querySelector("#achievement-detail-count").textContent =
+              count > 0 ? `Earned ${count} time${count > 1 ? "s" : ""}` : "Not yet earned";
+            elements.achievementDetailModal.style.display = "flex";
+          });
+          elements.achievementsGrid.appendChild(div);
+        });
+      } catch (e) {
+        console.error("Error updating achievements display:", e);
+      }
+    }
+
+    function renderProgressGraph() {
+      try {
+        if (progressChart) progressChart.destroy();
+        const ctx = elements.progressGraph.getContext("2d");
+        const recentTests = testHistory.slice(-10);
+        const labels = recentTests.map((_, i) => `Test ${i + 1}`);
+        const data = recentTests.map(test => test.wpm);
+        progressChart = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels,
+            datasets: [{
+              label: 'Words Per Minute',
+              data,
+              borderColor: getComputedStyle(document.documentElement).getPropertyValue('--accent-green').trim(),
+              backgroundColor: 'rgba(74, 222, 128, 0.2)',
+              fill: true,
+              tension: 0.4
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                title: { display: true, text: 'Words Per Minute', color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() },
+                ticks: { color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() },
+                grid: { color: 'rgba(255, 255, 255, 0.1)' }
+              },
+              x: {
+                title: { display: true, text: 'Test', color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() },
+                ticks: { color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() },
+                grid: { color: 'rgba(255, 255, 255, 0.1)' }
+              }
+            },
+            plugins: {
+              legend: { labels: { color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() } }
+            }
+          }
+        });
+      } catch (e) {
+        console.error("Error rendering progress graph:", e);
+      }
+    }
+
+    function resetTest() {
+      try {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+        state = {
+          wordList: [],
+          currentIndex: 0,
+          typed: "",
+          correctWords: 0,
+          incorrectWords: 0,
+          correctChars: 0,
+          wrongChars: 0,
+          startTime: null,
+          timeLeft: parseInt(elements.timeSelect.value) || 60,
+          duration: parseInt(elements.timeSelect.value) || 60,
+          isRunning: false,
+          lineOffset: 0,
+          typedHistory: [],
+          incorrectWordsMap: {}
+        };
+        elements.typingInput.value = "";
+        elements.typingInput.disabled = false;
+        elements.resultContainer.classList.add("hidden");
+        generateWords();
+        updateUI();
+        updateProgress();
+        elements.typingInput.focus();
+      } catch (e) {
+        console.error("Error resetting test:", e);
+      }
+    }
+
+    function startTimer() {
+      try {
+        if (state.isRunning && !timerInterval && state.timeLeft > 0) {
+          timerInterval = setInterval(() => {
+            state.timeLeft--;
+            updateUI();
+            updateProgress();
+            if (state.timeLeft <= 0) {
+              state.isRunning = false;
+              elements.typingInput.disabled = true;
+              clearInterval(timerInterval);
+              timerInterval = null;
+              showResults();
+            }
+          }, 1000);
+        }
+      } catch (e) {
+        console.error("Error starting timer:", e);
+      }
+    }
+
+    function handleTypingInput(event) {
+      try {
+        const inputValue = event.target.value;
+        state.typed = inputValue;
+
+        // Update current word highlighting
+        const currentWord = state.wordList[state.currentIndex];
+        const currentWordElement = document.getElementById(`word-${state.currentIndex}`);
+        if (currentWordElement) {
+          const trimmedInput = inputValue.trim();
+          if (trimmedInput && !currentWord.startsWith(trimmedInput)) {
+            currentWordElement.classList.add("bg-red");
+          } else {
+            currentWordElement.classList.remove("bg-red");
+          }
+        }
+
+        if (!state.isRunning && inputValue.trim()) {
+          state.isRunning = true;
+          state.startTime = Date.now();
+          startTimer();
+        }
+
+        if (inputValue.endsWith(" ") && inputValue.trim()) {
+          const trimmedInput = inputValue.trim();
+          const isCorrect = trimmedInput === currentWord;
+          const wordLength = currentWord.length;
+
+          if (isCorrect) {
+            state.correctWords++;
+            state.correctChars += wordLength;
+          } else {
+            state.incorrectWords++;
+            state.wrongChars += wordLength;
+            state.incorrectWordsMap[currentWord] = (state.incorrectWordsMap[currentWord] || 0) + 1;
+          }
+
+          state.typedHistory.push(trimmedInput);
+          const nextIndex = state.currentIndex + 1;
+          const prevWord = document.getElementById(`word-${state.currentIndex}`);
+          const nextWord = document.getElementById(`word-${nextIndex}`);
+          if (nextWord && prevWord && nextWord.offsetTop > prevWord.offsetTop) {
+            state.lineOffset++;
+          }
+
+          state.currentIndex = nextIndex;
+          elements.typingInput.value = "";
+          state.typed = "";
+
+          if (nextIndex >= state.wordList.length) {
+            state.isRunning = false;
+            elements.typingInput.disabled = true;
+            if (timerInterval) {
+              clearInterval(timerInterval);
+              timerInterval = null;
+            }
+            showResults();
+          } else {
+            updateUI();
+          }
+        } else {
+          updateUI();
+        }
+      } catch (e) {
+        console.error("Error handling typing input:", e);
+      }
+    }
+
+    elements.typingInput.addEventListener("input", handleTypingInput);
+
+    elements.typingInput.addEventListener("keydown", (event) => {
+      try {
+        if (event.key === " " && !elements.typingInput.value.trim()) {
+          event.preventDefault();
+        }
+      } catch (e) {
+        console.error("Error in keydown event:", e);
+      }
+    });
+
+    elements.timeSelect.addEventListener("change", () => {
+      try {
+        saveSettings();
+        if (!state.isRunning) {
+          state.timeLeft = parseInt(elements.timeSelect.value);
+          state.duration = parseInt(elements.timeSelect.value);
+          resetTest();
+        }
+      } catch (e) {
+        console.error("Error in time select change:", e);
+      }
+    });
+
+    elements.difficultySelect.addEventListener("change", () => {
+      try {
+        saveSettings();
+        if (!state.isRunning) {
+          resetTest();
+        }
+      } catch (e) {
+        console.error("Error in difficulty select change:", e);
+      }
+    });
+
+    elements.restartButton.addEventListener("click", resetTest);
+
+    elements.historyButton.addEventListener("click", () => {
+      try {
+        elements.historyTableBody.innerHTML = testHistory.map(result => `
+          <tr>
+            <td>${result.date}</td>
+            <td>${result.wpm}</td>
+            <td>${result.accuracy}%</td>
+            <td>${result.duration}s</td>
+          </tr>
+        `).join("");
+        renderProgressGraph();
+        elements.historyModal.style.display = "flex";
+      } catch (e) {
+        console.error("Error showing history modal:", e);
+      }
+    });
+
+    elements.profileButton.addEventListener("click", () => {
+      try {
+        const stats = {
+          "Total Tests": testHistory.length,
+          "Average WPM": testHistory.length ? Math.round(testHistory.reduce((sum, r) => sum + r.wpm, 0) / testHistory.length) : 0,
+          "Average Accuracy": testHistory.length ? Math.round(testHistory.reduce((sum, r) => sum + r.accuracy, 0) / testHistory.length) : 0,
+          "Best WPM": testHistory.length ? Math.max(...testHistory.map(r => r.wpm)) : 0
+        };
+        elements.profileStatsBody.innerHTML = Object.entries(stats).map(([key, value]) => `
+          <tr>
+            <td>${key}</td>
+            <td>${value}${key.includes("Accuracy") ? "%" : ""}</td>
+          </tr>
+        `).join("");
+        elements.profileModal.style.display = "flex";
+      } catch (e) {
+        console.error("Error showing profile modal:", e);
+      }
+    });
+
+    elements.usernameInput.addEventListener("change", () => {
+      try {
+        localStorage.setItem("username", elements.usernameInput.value);
+      } catch (e) {
+        console.error("Error saving username:", e);
+      }
+    });
+
+    elements.achievementsButton.addEventListener("click", () => {
+      try {
+        updateAchievementsDisplay();
+        elements.achievementsModal.style.display = "flex";
+      } catch (e) {
+        console.error("Error showing achievements modal:", e);
+      }
+    });
+
+    elements.customWordsButton.addEventListener("click", () => {
+      try {
+        elements.customWordsModal.style.display = "flex";
+      } catch (e) {
+        console.error("Error showing custom words modal:", e);
+      }
+    });
+
+    elements.customWordsSave.addEventListener("click", saveCustomWords);
+
+    elements.themeToggle.addEventListener("click", toggleTheme);
+
+    elements.exportResults.addEventListener("click", () => {
+      try {
+        if (testHistory.length === 0) {
+          alert("No test results to export!");
+          return;
+        }
+        const latestResult = testHistory[testHistory.length - 1];
+        const username = elements.usernameInput.value || "Anonymous";
+        const canvas = elements.exportCanvas;
+        const ctx = canvas.getContext("2d");
+
+        // Get theme colors
+        const rootStyle = getComputedStyle(document.documentElement);
+        const bgGradientStart = rootStyle.getPropertyValue('--bg-gradient-start').trim();
+        const bgGradientMiddle = rootStyle.getPropertyValue('--bg-gradient-middle').trim();
+        const bgGradientEnd = rootStyle.getPropertyValue('--bg-gradient-end').trim();
+        const primaryBg = rootStyle.getPropertyValue('--primary-bg').trim();
+        const secondaryBg = rootStyle.getPropertyValue('--secondary-bg').trim();
+        const border = rootStyle.getPropertyValue('--border').trim();
+        const textPrimary = rootStyle.getPropertyValue('--text-primary').trim();
+        const textSecondary = rootStyle.getPropertyValue('--text-secondary').trim();
+        const accentGreen = rootStyle.getPropertyValue('--accent-green').trim();
+        const textError = rootStyle.getPropertyValue('--text-error').trim();
+        const textSeat = rootStyle.getPropertyValue('--text-accent').trim();
+        const buttonRestart = rootStyle.getPropertyValue('--button-restart').trim();
+        const buttonSecondary = rootStyle.getPropertyValue('--button-secondary').trim();
+
+        // Set canvas dimensions
+        canvas.width = 900;
+        canvas.height = 650;
+
+        // Draw gradient background
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        gradient.addColorStop(0, bgGradientStart);
+        gradient.addColorStop(0.5, bgGradientMiddle);
+        gradient.addColorStop(1, bgGradientEnd);
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw result container
+        ctx.fillStyle = primaryBg;
+        ctx.shadowColor = rootStyle.getPropertyValue('--shadow').trim();
+        ctx.shadowBlur = 13;
+        ctx.shadowOffsetX = 1;
+        ctx.shadowOffsetY = 1;
+        ctx.beginPath();
+        ctx.roundRect(50, 50, 800, 550, 20);
+        ctx.fill();
+        ctx.strokeStyle = border;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // Draw username and date
+        ctx.font = '14px Poppins';
+        ctx.fillStyle = textSecondary;
+        ctx.textAlign = 'center';
+        ctx.fillText(`${username}`, canvas.width / 2, 90);
+        ctx.fillText(`${latestResult.date}`, canvas.width / 2, 110);
+
+        // Draw heading
+        ctx.font = '700 36px "Montagu Slab"';
+        ctx.fillStyle = textPrimary;
+        ctx.fillText('Test Complete!', canvas.width / 2, 160);
+
+        // Draw congrats message based on WPM
+        let congratsY = 200;
+        if (latestResult.wpm >= 100) {
+          ctx.font = '14px Poppins';
+          ctx.fillStyle = accentGreen;
+          ctx.fillText('Congratulations! Only 1% of people can type as fast as you!', canvas.width / 2, 190);
+          congratsY = 230;
+        } else if (latestResult.wpm >= 80) {
+          ctx.font = '14px Poppins';
+          ctx.fillStyle = accentGreen;
+          ctx.fillText('Congratulations! Only 5% of people can type as fast as you!', canvas.width / 2, 190);
+          congratsY = 230;
+        } else if (latestResult.wpm >= 60) {
+          ctx.font = '14px Poppins';
+          ctx.fillStyle = accentGreen;
+          ctx.fillText('Congratulations! Only 15% of people can type as fast as you!', canvas.width / 2, 190);
+          congratsY = 230;
+        }
+
+        // Define metrics
+        const metrics = [
+          { label: 'WPM', value: latestResult.wpm, icon: 'speed-up-line', color: accentGreen },
+          { label: 'Accuracy', value: `${latestResult.accuracy}%`, icon: 'focus-3-line', color: textSeat },
+          { label: 'Correct Words', value: latestResult.correctWords, icon: 'keyboard-box-line', color: accentGreen },
+          { label: 'Incorrect Words', value: latestResult.incorrectWords, icon: 'keyboard-box-line', color: textError },
+          { label: 'Total Keystrokes', value: latestResult.totalKeystrokes, icon: 'keyboard-box-line', color: textPrimary },
+          { label: 'Correct Keystrokes', value: latestResult.correctKeystrokes, icon: 'keyboard-box-line', color: accentGreen },
+          { label: 'Incorrect Keystrokes', value: latestResult.incorrectKeystrokes, icon: 'keyboard-box-line', color: textError }
+        ];
+
+        // Draw result cards
+        const cardWidth = 230;
+        const cardHeight = 100;
+        const cardMargin = 10;
+        const startX = 90;
+        const startY = congratsY;
+        const cardsPerRow = 3;
+        metrics.forEach((metric, index) => {
+          const col = index % cardsPerRow;
+          const row = Math.floor(index / cardsPerRow);
+          const x = startX + col * (cardWidth + cardMargin);
+          const y = startY + row * (cardHeight + cardMargin);
+
+          // Draw card
+          ctx.fillStyle = secondaryBg;
+          ctx.shadowColor = rootStyle.getPropertyValue('--shadow').trim();
+          ctx.shadowBlur = 4;
+          ctx.shadowOffsetX = 2;
+          ctx.shadowOffsetY = 1;
+          ctx.beginPath();
+          ctx.roundRect(x, y, cardWidth, cardHeight, 15);
+          ctx.fill();
+          ctx.strokeStyle = border;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+
+          // Draw card description
+          ctx.font = '13px Poppins';
+          ctx.fillStyle = textSecondary;
+          ctx.textAlign = 'left';
+          ctx.fillText(metric.label, x + 25, y + 25);
+          ctx.font = '13px "Remixicon"';
+          ctx.fillText(String.fromCharCode(parseInt('e900', 16)), x + cardWidth - 35, y + 25);
+
+          // Draw score
+          ctx.font = '600 40px Poppins';
+          ctx.fillStyle = metric.color;
+          ctx.fillText(metric.value, x + 25, y + 75);
+        });
+
+        // Draw watermark
+        ctx.font = '12px Poppins';
+        ctx.fillStyle = textSecondary;
+        ctx.textAlign = 'center';
+        ctx.fillText('Generated by Typing Test - typingtest.example.com', canvas.width / 2, 580);
+
+        // Download the image
+        const url = canvas.toDataURL("image/png");
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `typing_results_${new Date().toISOString()}.png`;
+        a.click();
+        URL.revokeObjectURL(url);
+      } catch (e) {
+        console.error("Error exporting results as image:", e);
+        alert("Failed to export results as image. Please try again.");
+      }
+    });
+
+    // Close modals when clicking on the background
+    [elements.historyModal, elements.profileModal, elements.achievementsModal, elements.achievementDetailModal, elements.customWordsModal].forEach(modal => {
+      modal.addEventListener("click", (event) => {
+        try {
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        } catch (e) {
+          console.error("Error closing modal on background click:", e);
+        }
+      });
+    });
+
+    document.querySelectorAll(".close-button").forEach(button => {
+      button.addEventListener("click", () => {
+        try {
+          elements.historyModal.style.display = "none";
+          elements.profileModal.style.display = "none";
+          elements.achievementsModal.style.display = "none";
+          elements.achievementDetailModal.style.display = "none";
+          elements.customWordsModal.style.display = "none";
+        } catch (e) {
+          console.error("Error closing modal:", e);
+        }
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      try {
+        loadStorage();
+        generateWords();
+        updateUI();
+        updateProgress();
+        elements.typingInput.focus();
+        } catch (e) {
+        console.error("Error during DOM content loaded:", e);
+      }
+    });
+  </script>
+</body>
+</html>
